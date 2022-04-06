@@ -40,7 +40,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.example.application.App")
+    mainClass.set("com.example.App")
 }
 
 tasks.test {

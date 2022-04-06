@@ -10,7 +10,10 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
     id("com.google.cloud.tools.jib") version "3.1.4"
+    id("org.springframework.boot") version "2.6.6"
 }
+
+apply(plugin = "io.spring.dependency-management")
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -36,11 +39,20 @@ dependencies {
     implementation("org.drools:drools-decisiontables:7.66.0.Final")
     implementation("ch.qos.logback:logback-classic:1.1.+")
     implementation("org.slf4j:slf4j-api:1.7.+")
+
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation("org.springframework.data:spring-data-jdbc")
+    implementation("org.projectlombok:lombok")
+    implementation("org.postgresql:postgresql")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.example.application.App")
+    mainClass.set("com.example.App")
 }
 
 tasks.test {
