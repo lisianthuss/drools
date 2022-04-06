@@ -6,7 +6,7 @@ import com.sample.config.DroolsBeanFactory;
 import com.sample.model.Fact;
 import com.sample.model.Result;
 
-public classApp {
+public class App {
     public static void main(String[] args) {
         Result result = new App().run();
         System.out.println(result.getValue());
