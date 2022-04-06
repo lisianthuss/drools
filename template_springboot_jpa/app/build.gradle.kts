@@ -21,6 +21,8 @@ repositories {
 }
 
 dependencies {
+    implementation("junit:junit:4.13.1")
+    implementation("junit:junit:4.13.1")
     // Use JUnit Jupiter for testing.
     testImplementation("org.junit.jupiter:junit-jupiter:5.7.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
@@ -51,11 +53,13 @@ dependencies {
 
     annotationProcessor("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
+
+    implementation("com.h2database:h2")
 }
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.example.App")
+    mainClass.set("template_springboot_jpa.App")
 }
 
 tasks.test {
@@ -74,3 +78,4 @@ jib {
         image = "gradle_test"
     }
 }
+
