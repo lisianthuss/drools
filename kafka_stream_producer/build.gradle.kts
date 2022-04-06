@@ -26,6 +26,9 @@ dependencies {
     implementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
     implementation("org.junit.jupiter:junit-jupiter:5.7.2")
     runtimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
+    
+    implementation("org.apache.kafka:kafka-clients:1.1.0");
+    implementation("org.apache.kafka:kafka-streams:1.1.0"); 
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:30.1.1-jre")
@@ -40,7 +43,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.sample.application.App")
+    mainClass.set("com.sample.kafka_stream_demo.Kafka_stream_demo")
 }
 
 tasks.test {

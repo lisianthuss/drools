@@ -9,7 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
-	id("com.google.cloud.tools.jib") version "3.1.4"
+    id("com.google.cloud.tools.jib") version "3.1.4"
 }
 
 repositories {
@@ -30,7 +30,7 @@ dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:30.1.1-jre")
     implementation("org.drools:drools-core:7.66.0.Final")
-	implementation("org.drools:drools-metric:7.66.0.Final")
+    implementation("org.drools:drools-metric:7.66.0.Final")
     implementation("org.drools:drools-compiler:7.66.0.Final")
     implementation("org.drools:drools-model-compiler:7.66.0.Final")
     implementation("org.drools:drools-decisiontables:7.66.0.Final")
@@ -40,7 +40,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.sample.application.App")
+    mainClass.set("com.example.application.App")
 }
 
 tasks.test {
@@ -49,13 +49,13 @@ tasks.test {
 }
 
 jib {
-	container {
-		creationTime = "USE_CURRENT_TIMESTAMP"
-	}
-	from {
-		image = "azul/zulu-openjdk:11"
-	}
-	to {
-		image = "gradle_test"
-	}
+    container {
+        creationTime = "USE_CURRENT_TIMESTAMP"
+    }
+    from {
+        image = "azul/zulu-openjdk:11"
+    }
+    to {
+        image = "gradle_test"
+    }
 }
