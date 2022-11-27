@@ -1,0 +1,22 @@
+package example;
+
+import example.Result;
+
+global example.Result result;
+
+dialect "mvel"
+
+
+rule "test"
+when
+    x : Result(id < 20)
+then
+    String s = "abcdefghijklmnopqrstuvwxyz"
+    foreach ( x : s ) {
+        System.out.println(x);
+    }
+    d = 10;
+    assert d == 10;
+
+    result.setData("hello, " + x.data);
+end
