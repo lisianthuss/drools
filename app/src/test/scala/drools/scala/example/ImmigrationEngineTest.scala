@@ -1,8 +1,9 @@
-package us.bleibinha.droolsscalaexample
+package drools.scala.example
 
-import org.scalatest.{ShouldMatchers, FunSpec}
+import org.scalatest.matchers.should._
+import org.scalatest.funspec._
 
-class ImmigrationEngineTest extends FunSpec with ShouldMatchers {
+class ImmigrationEngineTest extends AnyFunSpec with Matchers {
 
   describe("ImmigrationEngine") {
 
@@ -117,4 +118,3 @@ class ImmigrationEngineTest extends FunSpec with ShouldMatchers {
   }
 
 }
-

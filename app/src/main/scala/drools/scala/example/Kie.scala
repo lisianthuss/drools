@@ -1,4 +1,4 @@
-package us.bleibinha.droolsscalaexample
+package drools.scala.example
 
 import org.kie.api.KieServices
 import org.kie.api.runtime.{StatelessKieSession, KieContainer}
