@@ -1,0 +1,9 @@
+package scala_drools
+
+
+rule "Approve Good Credit"
+  when
+    true
+  then
+
+end
