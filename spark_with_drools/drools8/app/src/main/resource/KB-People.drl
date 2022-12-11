@@ -1,0 +1,213 @@
+package dummy;
+
+dialect "mvel"
+
+import java.util.LinkedList
+import java.util.Date
+import dummy.model.*
+
+global org.slf4j.Logger logger
+
+// --------------------------------------------------------------
+import java.util.Map
+
+declare Event
+  timestamp:Date
+  source:String
+end
+
+declare TrucBidule
+  message: String
+  value: int
+end
+
+declare TrucBiduleEvent extends Event
+  @role(event)
+  @timestamp( timestamp )
+  @expires(20s)
+  timestamp:Date
+  trucBidule:TrucBidule
+end
+
+
+rule "truc bidule event happens"
+  when
+    TrucBiduleEvent($truc:trucBidule)
+  then
+    logger.info("TrucBiduleEvent received :"+$truc.message)
+    insert($truc)
+end
+
+
+rule "invalid truc bidule"
+  when
+    TrucBidule($message:message, message!="GOOD")
+  then
+    logger.info("BAD TRUC BIDULE :"+$message)
+end
+
+
+rule "good truc bidule"
+  when
+    TrucBidule($message:message, message=="GOOD")
+  then
+    logger.info("GOOD TRUC BIDULE")
+end
+
+
+// --------------------------------------------------------------
+
+// --------------------------------------------------------------
+
+rule "who is young"
+  when
+    Someone($name:name, age < 30)
+  then
+    logger.info($name+" is very young")
+end
+
+// --------------------------------------------------------------
+
+rule "who has brown hairs"
+  when
+    Someone(attributes["hairs"]=="brown", $name:name)
+  then
+    logger.info($name+" has brown hairs")
+end
+
+// --------------------------------------------------------------
+
+rule "who has unknown colored hairs"
+  when
+    Someone(attributes not contains "hairs", $name:name)
+  then
+    logger.info($name+" has unknown colored hairs")
+end
+
+
+// --------------------------------------------------------------
+
+rule "people cars"
+  when
+    $car : Car($owner:someone.name)
+  then
+    logger.info("One of "+$owner+"'s car is "+$car.color.name+" "+$car.model)
+end
+
+// --------------------------------------------------------------
+
+rule "who own at least one red car"
+  when
+    $someone:Someone($name:name)
+    exists Car(someone == $someone, color == Color.red)
+  then
+    logger.info($name+" has at least one red car")
+end
+
+// --------------------------------------------------------------
+
+rule "who doesn't have a home"
+  when
+    $someone:Someone($name:name)
+    not Home(someone == $someone)
+  then
+    insert(new InformationRequest($someone, $name+"'s home is unknown"))
+end
+
+// --------------------------------------------------------------
+
+rule "who doesn't have an address"
+  when
+    Home(
+       $someone:someone,
+       !address.isDefined)
+  then
+    insert(new InformationRequest($someone, $someone.name+" address is unknown"))
+end
+
+// --------------------------------------------------------------
+
+rule "Who live at London"
+  when
+    Home(
+      $someone:someone,
+      address.isDefined,
+      address.get.town == "London")
+  then
+    insert(new InformationRemarkable($someone, $someone.name+" lives in London"))
+end
+
+// --------------------------------------------------------------
+
+rule "who owns more than 1 car"
+  when
+    $someone : Someone($name:name)
+    $cars    : LinkedList( size>1 ) from collect(Car(someone == $someone))
+  then
+    insert(new InformationRemarkable($someone, $someone.name+" has "+$cars.size+" cars"))
+end
+
+// --------------------------------------------------------------
+
+rule "process information requests"
+  when
+    InformationRequest($who:someone, $what:message)
+  then
+    logger.info("INFORMATION REQUESTED FOR "+$who+" : "+$what)
+end
+
+
+rule "process remarkable information"
+  when
+    InformationRemarkable($who:someone, $what:info)
+  then
+    //logger.info("REMARKABLE INFORMATION ABOUT "+$who+" : "+$what)
+    logger.info("REMARKABLE INFORMATION ABOUT {} : {}", $who, $what)
+end
+
+// --------------------------------------------------------------
+
+declare A
+  message:String
+  value:int
+end
+declare B
+  message:String
+  value:int
+end
+declare C
+  message:String
+  value:int
+end
+declare D
+  message:String
+  value:int
+end
+declare E
+  message:String
+  value:int
+end
+declare F
+  message:String
+  value:int
+end
+declare G
+  message:String
+  value:int
+end
+declare H
+  message:String
+  value:int
+end
+declare I
+  message:String
+  value:int
+end
+declare J
+  message:String
+  value:int
+end
+declare K
+  message:String
+  value:int
+end
