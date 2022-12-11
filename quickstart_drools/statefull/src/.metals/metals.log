@@ -1,0 +1,2 @@
+2022.11.27 14:14:53 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/lisian/worksplace/quickstart_drools/statefull/src/.metals/lsp.trace.json or /Users/lisian/Library/Caches/org.scalameta.metals/lsp.trace.json[0m
+2022.11.27 14:14:54 INFO  logging to file /Users/lisian/worksplace/quickstart_drools/statefull/.metals/metals.log[0m

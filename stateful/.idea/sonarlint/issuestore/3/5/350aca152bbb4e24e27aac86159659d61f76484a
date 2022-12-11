@@ -1,0 +1,11 @@
+
+t
+java:S2293+"YReplace the type specification in this constructor call with the diamond operator ("<>").(…ë˜Œüÿÿÿÿ
+z
+java:S11925"XDefine a constant instead of duplicating this literal "=======================" 3 times.(ôÆõÍúÿÿÿÿ8Å™¾Ë0
+O
+java:S3400"9Remove this method and declare a constant for this value.(ÌœØ™
+S	java:S1065"9Replace this use of System.out or System.err by a logger.(ôÆõÍúÿÿÿÿ
+Z	java:S106>"9Replace this use of System.out or System.err by a logger.(ôÆõÍúÿÿÿÿ8‰Û¾Ë0
+Z	java:S106D"9Replace this use of System.out or System.err by a logger.(ôÆõÍúÿÿÿÿ8éˆ‘¾Ë0
+T	java:S106G"9Replace this use of System.out or System.err by a logger.(Çğõ"8İ™¾Ë0
